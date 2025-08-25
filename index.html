@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Testing - New Haven Mortgage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #000;
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            color: #4CAF50;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            background-color: #333;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .title-underline {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            margin: 0 auto 40px;
+            border-radius: 2px;
+        }
+
+        .hero-section {
+            margin-top: 60px;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Footer Section Styles */
+        .footer-section {
+            background-color: #333;
+            padding: 60px 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #4CAF50;
+        }
+
+        .contact-info {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .license-info {
+            margin-top: 20px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icon.facebook {
+            background-color: #1877f2;
+        }
+
+        .social-icon.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-icon.linkedin {
+            background-color: #0077b5;
+        }
+
+        /* Map Section Styles */
+        .map-section {
+            background-color: #222;
+            padding: 40px 0;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .page-title {
+                font-size: 36px;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .nav-menu {
+                gap: 15px;
+            }
+
+            .nav-menu li a {
+                font-size: 12px;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+        }
+    </style>
+    <!-- Chatbot Styles -->
+    <link rel="stylesheet" href="nhmc-mortgage-chatbot-v1.0/chatbot.css?v=71">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://www.newhavenmortgage.com/broker/wp-content/uploads/sites/2/2022/12/Nw-Haven-Broker-logo.png" alt="New Haven Mortgage Corporation Logo">
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">MORTGAGE BROKERS</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">OUR SOLUTIONS</a></li>
+                    <li><a href="#">RESOURCES</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <h1 class="page-title">Chatbot Testing</h1>
+            <div class="title-underline"></div>
+            
+            <div class="hero-section">
+                <img src="https://www.newhavenmortgage.com/broker/wp-content/uploads/sites/2/2025/08/The-Future-Of-Residential-Mortgages_-Trends-To-Watch-In-2025-And-Beyond-1.png" alt="The Future of Residential Mortgages" class="hero-image">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <section class="footer-section">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Management Team</a></li>
+                        <li><a href="#">Business Relationship Team</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Solutions</h3>
+                    <ul>
+                        <li><a href="#">Mortgage Rates</a></li>
+                        <li><a href="#">Mortgage Solutions</a></li>
+                        <li><a href="#">Borrower Types</a></li>
+                        <li><a href="#">Property Types</a></li>
+                        <li><a href="#">Purchases</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Approved Appraisers</a></li>
+                        <li><a href="#">Loyalty Program</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <p>416-636-0000</p>
+                        <p>info@newhavenmortgage.com</p>
+                        <p><a href="#">sitemap</a></p>
+                    </div>
+                    <div class="license-info">
+                        <p><strong>Brokerage License No.:</strong> 10588</p>
+                        <p><strong>Administrator's License No.:</strong> 11284</p>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook">f</a>
+                        <a href="#" class="social-icon instagram">📷</a>
+                        <a href="#" class="social-icon linkedin">in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <iframe 
+                class="map-frame"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.1234567890123!2d-79.12345678901234!3d43.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb1234567890%3A0x1234567890abcdef!2s120%20Eglinton%20Ave%20E%20%23202%2C%20Toronto%2C%20ON%20M4P%201E2%2C%20Canada!5e0!3m2!1sen!2sca!4v1234567890123"
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Mortgage Eligibility Chatbot Widget -->
+    <div id="chatbot-widget">
+        <!-- Proactive Chat Prompt -->
+        <div id="chatbot-prompt" class="chatbot-prompt">
+            <div class="prompt-content">
+                <span class="prompt-message">Hey! Want to check if you're eligible for a mortgage? I can help!</span>
+                <button class="prompt-close" aria-label="Close prompt">×</button>
+            </div>
+        </div>
+        <button id="chatbot-toggle" aria-label="Open chat with mortgage assistant">
+            💬
+        </button>
+        <!-- Chat Window (hidden by default) -->
+        <div id="chatbot-window" aria-live="polite" aria-atomic="false" hidden>
+            <div id="chatbot-header">
+                <span>Mortgage Eligibility Assistant</span>
+            </div>
+            <div id="chatbot-messages" tabindex="0" aria-label="Chat messages"></div>
+            <form id="chatbot-form" autocomplete="off">
+                <input type="text" id="chatbot-input" placeholder="Type your message..." aria-label="Type your message" required style="border-radius: 30px !important;" />
+                <button type="submit" aria-label="Send">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </form>
+            <div id="chatbot-disclaimer">
+                <small>
+                    Disclaimer: All calculations provided by this assistant are approximate and for informational purposes only. They do not constitute an official mortgage approval or offer. Please contact our team for a formal assessment. The information provided here is confidential and not used for any other purposes.
+                </small>
+            </div>
+        </div>
+    </div>
+
+<!-- Chatbot Dependencies -->
+<script src="nhmc-mortgage-chatbot-v1.0/locations_array.js"></script>
+<script src="nhmc-mortgage-chatbot-v1.0/chatbot.js?v=71"></script>
+
+</body>
+</html>
